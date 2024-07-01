@@ -1,9 +1,8 @@
 using UnityEngine;
 
-namespace Pong
+namespace Breakout
 {
     public class Paddle : MonoBehaviour
     {
-        [SerializeField] private Animator Animator;
     }
 }

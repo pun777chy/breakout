@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 8275690329976355784}
   - component: {fileID: 4209847223658935653}
   - component: {fileID: 326038006030099100}
+  - component: {fileID: 3804639731675042958}
   m_Layer: 5
-  m_Name: Paddle
+  m_Name: Brick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,10 +56,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3691921659488465906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3725adbb08acbde4b9878092de533ee5, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b6a6eabef3d893459d17f79b1bb6d13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 0}
+  Animator: {fileID: 3804639731675042958}
 --- !u!114 &326038006030099100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89,3 +90,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &3804639731675042958
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691921659488465906}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fd4495273adb3ff4a8b9e92272e927e6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

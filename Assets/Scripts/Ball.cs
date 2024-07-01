@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Pong
+namespace Breakout
 {
     public class Ball : MonoBehaviour
     {
