@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33ef9ab5d430ab44db37a8dbc1a11f54, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: 
+  btnClickSound: {fileID: 8300000, guid: e4e9137a613a83e4d89f9fdd3c3a6223, type: 3}
+  ballCollidingSound: {fileID: 8300000, guid: 842f64297e562f94b8ea86bd42e47d77, type: 3}
+  brickBreakingSound: {fileID: 8300000, guid: 5d2a9b31aa7389c43992c7aa2426edf8, type: 3}
+  ballDropingSound: {fileID: 8300000, guid: 82748e9dc0dd1444a8cc3badc14cee62, type: 3}
+  levelFailedSound: {fileID: 8300000, guid: 1f2eafbbcdd567042b1f3fa57cbcb407, type: 3}
+  levelSuccessSound: {fileID: 8300000, guid: 5ba4f7031fe9f514ba8d12a8b0d318c1, type: 3}

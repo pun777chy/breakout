@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868bda674a3fed64f898b2716a54626c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BoxCollider2D: {fileID: 3089861189080004624}
+  boxCollider2D: {fileID: 3089861189080004624}
 --- !u!50 &540616253776654819
 Rigidbody2D:
   serializedVersion: 4

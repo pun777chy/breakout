@@ -57,6 +57,7 @@ namespace Breakout.Game
             ballRigidbody.bodyType = RigidbodyType2D.Dynamic;
             ballRigidbody.AddForce(initialImpulse, ForceMode2D.Impulse);
             BreakoutGameManager.Instance.OnBallResleased.Invoke(isAtRest);
+            AudioManager.Instance.OnBallColliding?.Invoke();
         }
         private void OnDisable()
         {
