@@ -48,7 +48,7 @@ namespace Breakout.Utilities
                 Destroy(gameObject);
             }
         }
-        private void OnDestroy()
+        public virtual void OnDestroy()
         {
             // Ensure that instance is cleaned up properly
             if (instance == this)

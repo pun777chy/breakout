@@ -30,14 +30,16 @@ namespace Breakout.Managers
 
         // OnDestroy is called when the object is destroyed.
         // Similar to OnDisable, we remove all listeners to clean up and avoid potential issues.
-        private void OnDestroy()
+        public override void OnDestroy()
         {
+            
             OnBallColliding.RemoveAllListeners();
             OnBrickBreaking.RemoveAllListeners();
             OnBallDroping.RemoveAllListeners();
             OnLevelFailed.RemoveAllListeners();
             OnLevelSuccess.RemoveAllListeners();
             OnBtnClick.RemoveAllListeners();
+            base.OnDestroy();
         }
     }
 }

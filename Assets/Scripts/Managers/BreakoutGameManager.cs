@@ -124,7 +124,7 @@ namespace Breakout.Managers
             OnBallResleased.RemoveAllListeners();
         }
         // OnDestroy is called when the object is destroyed, removing all event listeners to avoid memory leaks.
-        private void OnDestroy()
+        public override void OnDestroy()
         {
             OnScoreChanged.RemoveAllListeners();
             OnLivesChanged.RemoveAllListeners();
@@ -132,6 +132,7 @@ namespace Breakout.Managers
             OnResetLostBall.RemoveAllListeners();
             OnGameOver.RemoveAllListeners();
             OnBallResleased.RemoveAllListeners();
+            base.OnDestroy();
         }
     }
 }
