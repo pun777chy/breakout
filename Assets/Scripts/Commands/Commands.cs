@@ -43,16 +43,18 @@ namespace Breakout.Commands
     {
         private int lives;
         private int scoreToWin;
+        private int level;
 
-        public SetLevelValuesCommand(int lives, int scoreToWin)
+        public SetLevelValuesCommand(int lives, int scoreToWin, int level)
         {
             this.lives = lives;
             this.scoreToWin = scoreToWin;
+            this.level = level;
         }
 
         public void Execute()
         {
-            BreakoutGameManager.Instance.SetLevelValues(lives, scoreToWin);
+            BreakoutGameManager.Instance.SetLevelValues(lives, scoreToWin, level);
         }
     }
 }

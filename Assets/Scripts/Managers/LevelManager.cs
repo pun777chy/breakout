@@ -25,7 +25,7 @@ namespace Breakout.Managers
 
             var level = levelsScriptableObject.levels[levelIndex];
 
-            BreakoutGameManager.Instance.QueueCommand(new SetLevelValuesCommand(level.lives, level.scoreToWin));
+            BreakoutGameManager.Instance.QueueCommand(new SetLevelValuesCommand(level.lives, level.scoreToWin, levelIndex));
             Instantiate(level.levelBrickContainer, levelBricksContainerTransform);
         }
 

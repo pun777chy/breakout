@@ -628,6 +628,7 @@ MonoBehaviour:
   instructionText: {fileID: 1261305134}
   scoreText: {fileID: 1669062530}
   livesText: {fileID: 1635730024}
+  levelText: {fileID: 1216853587}
   endScreen: {fileID: 346558010}
   endScreenText: {fileID: 212129841}
   restartBtn: {fileID: 1382751084}
@@ -1066,6 +1067,74 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6494660103219528404, guid: 8e55f200597614d4bb88cfa07491b9e4, type: 3}
   m_PrefabInstance: {fileID: 4968987287355047350}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1078704586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1078704589}
+  - component: {fileID: 1078704588}
+  - component: {fileID: 1078704587}
+  m_Layer: 0
+  m_Name: EventSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1078704587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078704586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
+  m_SubmitButton: Submit
+  m_CancelButton: Cancel
+  m_InputActionsPerSecond: 10
+  m_RepeatDelay: 0.5
+  m_ForceModuleActive: 0
+--- !u!114 &1078704588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078704586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_FirstSelected: {fileID: 0}
+  m_sendNavigationEvents: 1
+  m_DragThreshold: 10
+--- !u!4 &1078704589
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078704586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1193245687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,7 +1243,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Level
+  m_Text: 'Level: 0'
 --- !u!222 &1216853588
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1417,19 +1486,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1382751085}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 386972879}
-        m_TargetAssemblyTypeName: Breakout.UI.BreakoutUI, Assembly-CSharp
-        m_MethodName: RestartGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1382751085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1625,7 +1682,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Lives: 3'
+  m_Text: 'Lives: 0'
 --- !u!222 &1635730025
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1704,7 +1761,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Score: 3'
+  m_Text: 'Score: 0'
 --- !u!222 &1669062531
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2075,34 +2132,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 3691921659488465906, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: m_TagString
-      value: Ball
-      objectReference: {fileID: 0}
-    - target: {fileID: 3936459937646496605, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3936459937646496605, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: m_GravityScale
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3936459937646496605, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: paddleTransform
+      value: 
+      objectReference: {fileID: 1616674666}
     - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: InitialImpulse.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4209847223658935653, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
-      propertyPath: InitialImpulse.y
-      value: 200
-      objectReference: {fileID: 0}
+      propertyPath: gameAreaTransform
+      value: 
+      objectReference: {fileID: 2109838705}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2169,7 +2206,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -460
+      value: -451.33453
       objectReference: {fileID: 0}
     - target: {fileID: 5642996080842731028, guid: 5dc2b1e06ce5c6d47be7f0209eb588eb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2196,3 +2233,4 @@ SceneRoots:
   - {fileID: 1365920366}
   - {fileID: 169756005}
   - {fileID: 386972878}
+  - {fileID: 1078704589}

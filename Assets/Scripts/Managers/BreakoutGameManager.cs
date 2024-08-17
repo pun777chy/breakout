@@ -11,17 +11,23 @@ namespace Breakout.Managers
     {
         public UnityEvent OnScoreChanged = new UnityEvent();
         public UnityEvent OnLivesChanged = new UnityEvent();
+        public UnityEvent OnLevelChanged = new UnityEvent();
         public UnityEvent<bool> OnGameOver = new UnityEvent<bool>();
+        public UnityEvent OnBallResleased = new UnityEvent();
 
         internal static int score { get; private set; }
         internal static int lives { get; private set; } = 3;
+        internal static int level { get; private set; }
         internal static bool won { get; private set; } = false;
         internal static int scoreToWin { get; private set; } = 150;
        
 
         private Queue<ICommand> commandQueue = new Queue<ICommand>();
 
-      
+        private void Start()
+        {
+            StartGame();
+        }
 
         private void Update()
         {
@@ -37,15 +43,17 @@ namespace Breakout.Managers
             commandQueue.Enqueue(command);
         }
 
-        public void SetLevelValues(int levelLives, int levelScoreToWin)
+        public void SetLevelValues(int levelLives, int levelScoreToWin, int currentLevel)
         {
             lives = levelLives;
             scoreToWin = levelScoreToWin;
+            level = currentLevel;
         }
         public void StartGame()
         {
             OnScoreChanged.Invoke();
             OnLivesChanged.Invoke();
+            OnLevelChanged.Invoke();
             Debug.Log("Game Started");
         }
 
@@ -70,6 +78,7 @@ namespace Breakout.Managers
             {
                 won = false;
                 QueueCommand(new EndGameCommand());
+                return;
             }
         }
 
@@ -87,6 +96,15 @@ namespace Breakout.Managers
         public void OnBallLost()
         {
             QueueCommand(new LoseLifeCommand());
+        }
+        private void OnDestroy()
+        {
+            // Unsubscribe all listeners to avoid memory leaks
+            OnScoreChanged.RemoveAllListeners();
+            OnLivesChanged.RemoveAllListeners();
+            OnLevelChanged.RemoveAllListeners();
+            OnGameOver.RemoveAllListeners();
+            OnBallResleased.RemoveAllListeners();
         }
     }
 }

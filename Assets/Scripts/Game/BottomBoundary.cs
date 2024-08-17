@@ -2,7 +2,7 @@ using UnityEngine;
 using Breakout.Managers;
 namespace Breakout
 {
-    public class BottonBoundary : MonoBehaviour
+    public class BottomBoundary : MonoBehaviour
     {
         private void OnTriggerEnter2D(Collider2D collision)
         {

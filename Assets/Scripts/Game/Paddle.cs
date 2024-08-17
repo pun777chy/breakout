@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Breakout
+namespace Breakout.Game
 {
     public class Paddle : MonoBehaviour
     {
@@ -20,6 +20,7 @@ namespace Breakout
 
             newPosition.x = Mathf.Clamp(newPosition.x, 0, Screen.width);
             rb.MovePosition(newPosition);
+           
         }
     }
 }
