@@ -1,4 +1,4 @@
-Breakout Game Documentation
+**Breakout Game Documentation**
 Overview
 The Breakout game is a classic arcade game implemented in Unity, featuring a paddle, ball, bricks, and a scoring system. The game includes several components that manage game state, audio, levels, and user interface. The architecture follows common design patterns such as Singleton, Command, and Decorator patterns to ensure modularity and maintainability.
 1. Game Architecture
