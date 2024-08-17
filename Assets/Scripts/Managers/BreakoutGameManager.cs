@@ -12,8 +12,9 @@ namespace Breakout.Managers
         public UnityEvent OnScoreChanged = new UnityEvent();
         public UnityEvent OnLivesChanged = new UnityEvent();
         public UnityEvent OnLevelChanged = new UnityEvent();
+        public UnityEvent OnResetLostBall = new UnityEvent();
         public UnityEvent<bool> OnGameOver = new UnityEvent<bool>();
-        public UnityEvent OnBallResleased = new UnityEvent();
+        public UnityEvent<bool> OnBallResleased = new UnityEvent<bool>();
 
         internal static int score { get; private set; }
         internal static int lives { get; private set; } = 3;
@@ -24,10 +25,10 @@ namespace Breakout.Managers
 
         private Queue<ICommand> commandQueue = new Queue<ICommand>();
 
-        private void Start()
-        {
-            StartGame();
-        }
+        //private void Start()
+        //{
+        //    StartGame();
+        //}
 
         private void Update()
         {
@@ -51,16 +52,16 @@ namespace Breakout.Managers
         }
         public void StartGame()
         {
-            OnScoreChanged.Invoke();
-            OnLivesChanged.Invoke();
-            OnLevelChanged.Invoke();
+            OnScoreChanged?.Invoke();
+            OnLivesChanged?.Invoke();
+            OnLevelChanged?.Invoke();
             Debug.Log("Game Started");
         }
 
         public void UpdateScore(int points)
         {
             score += points;
-            OnScoreChanged.Invoke();
+            OnScoreChanged?.Invoke();
             Debug.Log("Score Updated: " + score);
             if(score>=scoreToWin)
             {
@@ -72,7 +73,7 @@ namespace Breakout.Managers
         public void LoseLife()
         {
             lives--;
-            OnLivesChanged.Invoke();
+            OnLivesChanged?.Invoke();
 
             if (lives <= 0)
             {
@@ -80,11 +81,12 @@ namespace Breakout.Managers
                 QueueCommand(new EndGameCommand());
                 return;
             }
+            OnResetLostBall?.Invoke();
         }
 
         public void EndGame()
         {
-            OnGameOver.Invoke(won);
+            OnGameOver?.Invoke(won);
             Debug.Log("Game Over");
         }
 
@@ -103,6 +105,7 @@ namespace Breakout.Managers
             OnScoreChanged.RemoveAllListeners();
             OnLivesChanged.RemoveAllListeners();
             OnLevelChanged.RemoveAllListeners();
+            OnResetLostBall.RemoveAllListeners();
             OnGameOver.RemoveAllListeners();
             OnBallResleased.RemoveAllListeners();
         }

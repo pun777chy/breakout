@@ -38,9 +38,9 @@ namespace Breakout.UI
             restartBtn.onClick.RemoveListener(RestartGame);
         }
 
-        private void OnBallReleased()
+        private void OnBallReleased(bool isActive)
         {
-            instructionText.gameObject.SetActive(false);
+            instructionText.gameObject.SetActive(isActive);
         }
 
         public void Initialize()
