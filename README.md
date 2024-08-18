@@ -40,6 +40,8 @@ The Breakout game code is structured to ensure clear separation of concerns and 
      
 
 **1. Game Architecture**
+
+
 1.1 Singleton Pattern
 
 •	Purpose: Ensures that only one instance of a class exists and provides a global point of access.
