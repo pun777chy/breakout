@@ -1,12 +1,15 @@
 **Breakout Game Documentation**
-Overview
+
+
+**Overview**
 The Breakout game is a classic arcade game implemented in Unity, featuring a paddle, ball, bricks, and a scoring system. The game includes several components that manage game state, audio, levels, and user interface. The architecture follows common design patterns such as Singleton, Command, and Decorator patterns to ensure modularity and maintainability.
-1. Game Architecture
+
+**1. Game Architecture**
 1.1 Singleton Pattern
 •	Purpose: Ensures that only one instance of a class exists and provides a global point of access.
 •	Implementation: GenericSingleton<T> class
-csharp
-Copy code
+ 
+  
 public class GenericSingleton<T> : MonoBehaviour where T : Component
 {
     private static T instance;
@@ -44,8 +47,8 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
 1.2 Command Pattern
 •	Purpose: Encapsulates a request as an object, thereby allowing parameterization and queuing of requests.
 •	Implementation: ICommand interface and various command classes
-csharp
-Copy code
+ 
+  
 public interface ICommand
 {
     void Execute();
@@ -74,8 +77,8 @@ public class UpdateScoreCommand : ICommand
 1.3 Decorator Pattern
 •	Purpose: Allows behavior to be added to individual objects, either statically or dynamically, without affecting the behavior of other objects from the same class.
 •	Implementation: BrickDecorator abstract class and ExplodingBrick concrete class
-csharp
-Copy code
+ 
+  
 public abstract class BrickDecorator : Brick
 {
     protected Brick decoratedBrick;
@@ -103,7 +106,7 @@ public class ExplodingBrick : BrickDecorator
         Debug.Log("Explosion Effect Applied!");
     }
 }
-2. Game Components
+**2. Game Components**
 2.1 BreakoutGameManager
 •	Purpose: Manages the game state including score, lives, and level transitions.
 •	Key Methods:
@@ -111,8 +114,8 @@ o	StartGame(): Initializes the game state.
 o	UpdateScore(int points): Updates the score and checks for win conditions.
 o	LoseLife(): Decreases lives and handles game over conditions.
 o	SetLevelValues(int levelLives, int levelScoreToWin, int currentLevel): Sets values based on the current level.
-csharp
-Copy code
+ 
+  
 public class BreakoutGameManager : GenericSingleton<BreakoutGameManager>
 {
     public UnityEvent OnScoreChanged = new UnityEvent();
@@ -163,8 +166,8 @@ public class BreakoutGameManager : GenericSingleton<BreakoutGameManager>
 •	Purpose: Handles playback of sound effects based on game events.
 •	Key Methods:
 o	PlayOnBallCollide(), PlayOnBrickBreaking(), etc.: Methods to play specific sound effects.
-csharp
-Copy code
+ 
+  
 public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioSource audioSource;
@@ -200,8 +203,8 @@ public class SoundManager : MonoBehaviour
 •	Key Methods:
 o	InitializeLevel(int levelIndex): Sets up the level based on index.
 o	LoadNextLevel(): Advances to the next level.
-csharp
-Copy code
+ 
+  
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelsScriptableObject levelsScriptableObject;
@@ -246,8 +249,8 @@ public class LevelManager : MonoBehaviour
 •	Key Methods:
 o	UpdateScore(), UpdateLives(), UpdateLevel(): Update UI elements with current game data.
 o	ShowEndScreen(bool victory): Displays the end screen with the result of the game.
-csharp
-Copy code
+ 
+  
 public class BreakoutUI : MonoBehaviour
 {
     [SerializeField] private Text instructionText;
@@ -315,8 +318,8 @@ public class BreakoutUI : MonoBehaviour
 •	Key Constants:
 o	Ball: Tag for the ball object.
 o	HorizontalAxis: Input axis name for paddle movement.
-csharp
-Copy code
+ 
+  
 public class GameConstants
 {
     public const string Ball = "Ball";
@@ -328,8 +331,8 @@ public class GameConstants
 o	Brick: Base class for bricks with hit points and point value.
 o	BrickDecorator: Abstract decorator class for adding behavior to bricks.
 o	ExplodingBrick: Concrete decorator that adds explosion effects to bricks.
-csharp
-Copy code
+ 
+  
 public abstract class BrickDecorator : Brick
 {
     protected Brick decoratedBrick;
@@ -357,7 +360,9 @@ public class ExplodingBrick : BrickDecorator
         Debug.Log("Explosion Effect Applied!");
     }
 }
-3. User Interface (UI)
+
+
+**3. User Interface (UI)**
 3.1 UI Elements
 •	Components:
 o	Text: Displays score, lives, level, and end screen messages.
@@ -369,8 +374,8 @@ o	UpdateScore(): Updates the score display.
 o	UpdateLives(): Updates the lives display.
 o	UpdateLevel(): Updates the level display.
 o	ShowEndScreen(bool victory): Shows the end screen with the result.
-csharp
-Copy code
+ 
+  
 public class BreakoutUI : MonoBehaviour
 {
     // UI elements
@@ -388,6 +393,3 @@ public class BreakoutUI : MonoBehaviour
     public void UpdateLevel() { /* ... */ }
     public void ShowEndScreen(bool victory = false) { /* ... */ }
 }
-4. Conclusion
-The Breakout game code is structured to ensure clear separation of concerns and extensibility. The Singleton pattern provides global access to managers, the Command pattern encapsulates game actions, and the Decorator pattern enhances the behavior of game objects. The UI components respond to game state changes to keep the player informed and engaged.
-
