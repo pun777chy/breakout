@@ -13,9 +13,22 @@ https://github.com/user-attachments/assets/e1d0672f-5755-4b5a-b8bd-13441cacc01f
 
 **Breakout Game Documentation**
 
-
+ 
 **Overview**
-The Breakout game is a classic arcade game implemented in Unity, featuring a paddle, ball, bricks, and a scoring system. The game includes several components that manage game state, audio, levels, and user interface. The architecture follows common design patterns such as Singleton, Command, and Decorator patterns to ensure modularity and maintainability.
+This document provides a comprehensive overview of the Breakout game project developed in Unity. It describes the various components, scripts, and their interactions that make up the game. The game is designed to be modular, scalable, and easily maintainable using object-oriented principles, design patterns, and Unity's game development tools.
+The Breakout game includes several components that manage game state, audio, levels, and user interface. The architecture follows common design patterns such as Singleton, Command, and Decorator patterns to ensure modularity and maintainability.
+
+The Breakout game code is structured to ensure clear separation of concerns and extensibility. The Singleton pattern provides global access to managers, the Command pattern encapsulates game actions, and the Decorator pattern enhances the behavior of game objects. The UI components respond to game state changes to keep the player informed and engaged.
+
+
+**Project Structure**
+•	Scripts Folder:
+o	Commands: Contains command pattern implementations to execute various game actions.
+o	Game: Includes scripts related to the core gameplay mechanics such as brick behavior.
+o	Managers: Holds scripts that manage the overall game state, levels, and audio.
+o	ScriptableObjects: Contains data containers for levels and audio settings.
+o	UI: Manages the user interface elements and updates.
+o	Utilities: Provides utility scripts like generic singleton implementations.
 
 **1. Game Architecture**
 1.1 Singleton Pattern
