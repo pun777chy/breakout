@@ -12,8 +12,9 @@ namespace Breakout.Game
         [SerializeField] private Transform paddleTransform;
         [SerializeField] private Transform gameAreaTransform;
         [SerializeField] private Vector3 ballRestingPosition;
-
+        [SerializeField] private float referenceWidth = 1920f;
         private bool isAtRest = true;
+        
 
         private void OnEnable()
         {
@@ -55,7 +56,7 @@ namespace Breakout.Game
             isAtRest = false;
             transform.SetParent(gameAreaTransform);
             ballRigidbody.bodyType = RigidbodyType2D.Dynamic;
-            ballRigidbody.AddForce(initialImpulse, ForceMode2D.Impulse);
+            ballRigidbody.AddForce(initialImpulse * (Screen.width / referenceWidth), ForceMode2D.Impulse);
             BreakoutGameManager.Instance.OnBallResleased.Invoke(isAtRest);
             AudioManager.Instance.OnBallColliding?.Invoke();
         }

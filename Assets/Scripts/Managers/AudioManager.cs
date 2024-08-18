@@ -16,6 +16,10 @@ namespace Breakout.Managers
         public UnityEvent OnLevelSuccess = new UnityEvent();
         public UnityEvent OnBtnClick = new UnityEvent();
 
+        public override void Awake()
+        {
+            base.Awake();
+        }
         // OnDisable is called when the object becomes disabled or inactive.
         // We remove all listeners from the events to prevent memory leaks or unwanted behavior.
         private void OnDisable()

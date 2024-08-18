@@ -50,7 +50,7 @@ namespace Breakout.Utilities
         }
         public virtual void OnDestroy()
         {
-            // Ensure that instance is cleaned up properly
+            Debug.Log("Destroying instance of " + typeof(T).Name);
             if (instance == this)
             {
                 instance = null;

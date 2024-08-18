@@ -28,6 +28,10 @@ namespace Breakout.Managers
         // Queue to hold commands that need to be executed
         private Queue<ICommand> commandQueue = new Queue<ICommand>();
 
+        public override void Awake()
+        {
+            base.Awake();
+        }
         // Update is called once per frame to process the command queue.
         private void Update()
         {
@@ -67,7 +71,7 @@ namespace Breakout.Managers
         {
             score += points;
             OnScoreChanged?.Invoke();
-            Debug.Log("Score Updated: " + score+" points "+ points);
+            Debug.Log("Score Updated: " + score);
             if (score >= scoreToWin)
             {
                 won = true;
