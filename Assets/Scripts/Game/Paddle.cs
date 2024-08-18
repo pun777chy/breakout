@@ -19,7 +19,7 @@ namespace Breakout.Game
         }
 
         // Called every frame to handle player input and move the paddle.
-        private void Update()
+        private void FixedUpdate()
         {
             // Get horizontal input (left/right arrow keys or A/D keys).
             float horizontalInput = Input.GetAxis(GameConstants.HorizontalAxis);

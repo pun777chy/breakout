@@ -67,7 +67,7 @@ namespace Breakout.Managers
         {
             score += points;
             OnScoreChanged?.Invoke();
-            Debug.Log("Score Updated: " + score);
+            Debug.Log("Score Updated: " + score+" points "+ points);
             if (score >= scoreToWin)
             {
                 won = true;
