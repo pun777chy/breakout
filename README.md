@@ -24,6 +24,8 @@ The Breakout game code is structured to ensure clear separation of concerns and 
 
 **Project Structure**
 •	Scripts Folder:
+
+
      o	Commands: Contains command pattern implementations to execute various game actions.
      
      o	Game: Includes scripts related to the core gameplay mechanics such as brick behavior.
