@@ -41,7 +41,9 @@ The Breakout game code is structured to ensure clear separation of concerns and 
 
 **1. Game Architecture**
 1.1 Singleton Pattern
+
 •	Purpose: Ensures that only one instance of a class exists and provides a global point of access.
+
 •	Implementation: GenericSingleton<T> class
  
   
@@ -79,8 +81,11 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
         }
     }
 }
+
 1.2 Command Pattern
+
 •	Purpose: Encapsulates a request as an object, thereby allowing parameterization and queuing of requests.
+
 •	Implementation: ICommand interface and various command classes
  
   
