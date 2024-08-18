@@ -23,12 +23,12 @@ The Breakout game code is structured to ensure clear separation of concerns and 
 
 **Project Structure**
 •	Scripts Folder:
-o	Commands: Contains command pattern implementations to execute various game actions.
-o	Game: Includes scripts related to the core gameplay mechanics such as brick behavior.
-o	Managers: Holds scripts that manage the overall game state, levels, and audio.
-o	ScriptableObjects: Contains data containers for levels and audio settings.
-o	UI: Manages the user interface elements and updates.
-o	Utilities: Provides utility scripts like generic singleton implementations.
+     o	Commands: Contains command pattern implementations to execute various game actions.
+     o	Game: Includes scripts related to the core gameplay mechanics such as brick behavior.
+     o	Managers: Holds scripts that manage the overall game state, levels, and audio.
+     o	ScriptableObjects: Contains data containers for levels and audio settings.
+     o	UI: Manages the user interface elements and updates.
+     o	Utilities: Provides utility scripts like generic singleton implementations.
 
 **1. Game Architecture**
 1.1 Singleton Pattern
