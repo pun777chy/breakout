@@ -49,25 +49,45 @@ The Breakout game code is structured to ensure clear separation of concerns and 
 •	Implementation: GenericSingleton<T> class
  
   
+
 public class GenericSingleton<T> : MonoBehaviour where T : Component
 {
+
     private static T instance;
+
     public static T Instance
+    
     {
+    
         get
+        
         {
+        
             if (instance == null)
+            
             {
+            
                 instance = FindObjectOfType<T>();
+                
                 if (instance == null)
+                
                 {
+                
                     GameObject obj = new GameObject();
+                    
                     obj.name = typeof(T).Name;
+                    
                     instance = obj.AddComponent<T>();
+            
                 }
+                
             }
+
+            
             return instance;
+        
         }
+    
     }
 
     public virtual void Awake()
@@ -84,6 +104,7 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
     }
 }
 
+
 1.2 Command Pattern
 
 •	Purpose: Encapsulates a request as an object, thereby allowing parameterization and queuing of requests.
@@ -92,28 +113,49 @@ public class GenericSingleton<T> : MonoBehaviour where T : Component
  
   
 public interface ICommand
+
 {
+
     void Execute();
+
 }
+
 
 public class StartGameCommand : ICommand
+
 {
+
     public void Execute()
+    
     {
+    
         BreakoutGameManager.Instance.StartGame();
+    
     }
+
 }
 
+
 public class UpdateScoreCommand : ICommand
+
 {
+
     private int points;
+    
     public UpdateScoreCommand(int points)
+    
     {
+    
         this.points = points;
+    
     }
+    
     public void Execute()
+    
     {
+    
         BreakoutGameManager.Instance.UpdateScore(points);
+    
     }
 }
 1.3 Decorator Pattern
@@ -121,33 +163,57 @@ public class UpdateScoreCommand : ICommand
 •	Implementation: BrickDecorator abstract class and ExplodingBrick concrete class
  
   
+
 public abstract class BrickDecorator : Brick
+
 {
+
     protected Brick decoratedBrick;
 
+    
     public BrickDecorator(Brick brick)
+    
     {
+    
         decoratedBrick = brick;
+    
     }
 
+    
     public override void OnHit()
+    
     {
+    
         decoratedBrick.OnHit();
+        
         ApplyDecoration();
+    
     }
 
+    
     protected abstract void ApplyDecoration();
+
 }
+
 
 public class ExplodingBrick : BrickDecorator
+
 {
+
     public ExplodingBrick(Brick brick) : base(brick) { }
 
+    
     protected override void ApplyDecoration()
+    
     {
+    
         Debug.Log("Explosion Effect Applied!");
+    
     }
+
 }
+
+
 **2. Game Components**
 2.1 BreakoutGameManager
 •	Purpose: Manages the game state including score, lives, and level transitions.
@@ -158,13 +224,21 @@ o	LoseLife(): Decreases lives and handles game over conditions.
 o	SetLevelValues(int levelLives, int levelScoreToWin, int currentLevel): Sets values based on the current level.
  
   
+
 public class BreakoutGameManager : GenericSingleton<BreakoutGameManager>
+
 {
+
     public UnityEvent OnScoreChanged = new UnityEvent();
+    
     public UnityEvent OnLivesChanged = new UnityEvent();
+    
     public UnityEvent OnLevelChanged = new UnityEvent();
+    
     public UnityEvent OnResetLostBall = new UnityEvent();
+    
     public UnityEvent<bool> OnGameOver = new UnityEvent<bool>();
+    
     public UnityEvent<bool> OnBallResleased = new UnityEvent<bool>();
 
     internal static int score { get; private set; } = 0;
@@ -210,17 +284,27 @@ public class BreakoutGameManager : GenericSingleton<BreakoutGameManager>
 o	PlayOnBallCollide(), PlayOnBrickBreaking(), etc.: Methods to play specific sound effects.
  
   
+
 public class SoundManager : MonoBehaviour
+
 {
+
     [SerializeField] private AudioSource audioSource;
+    
     [SerializeField] private AudioScriptableObject levelsScriptableObject;
 
+    
     private void Awake()
+    
     {
+    
         audioSource = audioSource ?? GetComponent<AudioSource>();
+    
     }
 
+    
     private void OnEnable()
+    
     {
         AudioManager.Instance.OnBallColliding.AddListener(PlayOnBallCollide);
         AudioManager.Instance.OnBrickBreaking.AddListener(PlayOnBrickBreaking);
@@ -248,8 +332,11 @@ o	LoadNextLevel(): Advances to the next level.
  
   
 public class LevelManager : MonoBehaviour
+
 {
+
     [SerializeField] private LevelsScriptableObject levelsScriptableObject;
+    
     [SerializeField] private Transform levelBricksContainerTransform;
 
     internal static int currentLevel { get; private set; } = 0;
